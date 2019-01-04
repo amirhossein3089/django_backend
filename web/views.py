@@ -147,3 +147,22 @@ def submit_expense(request):
     return JsonResponse({
         'status':'ok',
     },encoder=json.JSONEncoder) 
+
+
+
+@csrf_exempt
+@require_POST
+def generalstat(request):
+    # TODO: should get a valid duration (from - to), if not, use 1 month
+    # TODO: is the token valid?
+    this_token = request.POST['token']
+    this_user = get_object_or_404(User, token__token=this_token)
+    income = Income.objects.filter(user=this_user).aggregate(
+        Count('amount'), Sum('amount'))
+    expense = Expense.objects.filter(user=this_user).aggregate(
+        Count('amount'), Sum('amount'))
+    context = {}
+    context['expense'] = expense
+    context['income'] = income
+    # return {'income':'INCOME','expanse':'EXPANSE'}
+    return JsonResponse(context, encoder=json.JSONEncoder) 
