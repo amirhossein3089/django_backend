@@ -3,7 +3,7 @@
 This is a django progect
 
 
-## TODO
+## TODOs
 []No need to login after registration
 
 
