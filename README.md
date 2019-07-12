@@ -4,6 +4,6 @@ This is a django project
 
 
 ## TODOs
-[]No need to login after registration
+[1]No need to login after registration
 
 
