@@ -1,6 +1,6 @@
 # django_backend
 
-This is a django progect
+This is a django project
 
 
 ## TODO
